@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chinamobile.foot.dao.BaseDataDao">
+
+    <select id="getDeviceCode" resultType="java.lang.String" parameterType="String">
+        select device_code from tb_device where device_type=#{device_type}
+    </select>
+
+</mapper>

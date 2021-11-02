@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chinamobile.foot.dao.TableRecordDao">
+
+    <resultMap id="userDataMap" type="com.chinamobile.foot.bean.TableRecord">
+        <result property="id" column="id" />
+        <result property="table_name" column="table_name" />
+        <result property="start_time" column="start_time" />
+        <result property="end_time" column="end_time" />
+    </resultMap>
+
+    <sql id="dataColumn">
+        table_name,
+        start_time,
+        end_time
+    </sql>
+
+
+    <insert id="insertData" parameterType="com.chinamobile.foot.bean.TableRecord">
+        <selectKey keyColumn="id" keyProperty="id" order="AFTER" resultType="int">
+            select  @@IDENTITY AS id
+        </selectKey>
+        INSERT INTO tb_table_record(<include refid="dataColumn" />)
+        values(
+            #{table_name},
+            #{start_time},
+            #{end_time}
+        )
+    </insert>
+
+    <update id="updateData" parameterType="com.chinamobile.foot.bean.TableRecord">
+        update tb_table_record set end_time=#{end_time} where id=#{id} and table_name = #{table_name}
+    </update>
+
+    <select id="getData" resultMap="userDataMap" parameterType="Map">
+        SELECT a.id,a.table_name,a.end_time FROM tb_table_record a
+        INNER JOIN(
+            select table_name,max(end_time) end_time
+            from tb_table_record
+            where table_name=#{table_name}
+            group by table_name
+        )b ON a.table_name=b.table_name
+          AND a.end_time=b.end_time
+    </select>
+
+</mapper>

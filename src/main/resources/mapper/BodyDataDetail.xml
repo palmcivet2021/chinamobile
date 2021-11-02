@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chinamobile.foot.dao.BodyDataDetailDao">
+
+    <resultMap id="userDataMap" type="com.chinamobile.foot.bean.BodyDataDetail">
+        <result property="id" column="id" />
+        <result property="body_id" column="body_id" />
+        <result property="pressure_data" column="pressure_data" />
+        <result property="anxiety_data" column="anxiety_data" />
+        <result property="depression_data" column="depression_data" />
+        <result property="blood_pressure_dbp" column="blood_pressure_dbp" />
+        <result property="blood_pressure_sbp" column="blood_pressure_sbp" />
+        <result property="blood_pressure_hr" column="blood_pressure_hr" />
+        <result property="blood_pressure_tp" column="blood_pressure_tp" />
+        <result property="blood_pressure_step_count" column="blood_pressure_step_count" />
+        <result property="blood_pressure_emo_list" column="blood_pressure_emo_list" />
+        <result property="start_time" column="start_time" />
+        <result property="end_time" column="end_time" />
+    </resultMap>
+
+    <sql id="dataColumn">
+        body_id,
+        pressure_data,
+        anxiety_data,
+        depression_data,
+        blood_pressure_dbp,
+        blood_pressure_sbp,
+        blood_pressure_hr,
+        blood_pressure_tp,
+        blood_pressure_step_count,
+        blood_pressure_emo_list,
+        start_time,
+        end_time
+    </sql>
+
+
+    <insert id="insertData" parameterType="com.chinamobile.foot.bean.BodyDataDetail">
+        <selectKey keyColumn="id" keyProperty="id" order="AFTER" resultType="int">
+            select  @@IDENTITY AS id
+        </selectKey>
+        INSERT INTO tb_body_data_detail(<include refid="dataColumn" />)
+        values(
+            #{body_id},
+            #{pressure_data},
+            #{anxiety_data},
+            #{depression_data},
+            #{blood_pressure_dbp},
+            #{blood_pressure_sbp},
+            #{blood_pressure_hr},
+            #{blood_pressure_tp},
+            #{blood_pressure_step_count},
+            #{blood_pressure_emo_list},
+            #{start_time},
+            #{end_time}
+        )
+    </insert>
+
+    <select id="getDataList" resultMap="userDataMap" parameterType="Map">
+        select id,<include refid="dataColumn" />
+        from tb_body_data_detail
+        where body_id = #{body_id}
+    </select>
+
+
+</mapper>
