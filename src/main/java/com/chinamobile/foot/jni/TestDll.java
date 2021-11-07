@@ -1,11 +1,8 @@
 package com.chinamobile.foot.jni;
 
-import com.chinamobile.foot.neurondata.NeuronDataReaderDllLib;
 import com.sun.jna.Library;
 import com.sun.jna.Native;
 import com.sun.jna.Pointer;
-
-import java.net.Socket;
 
 public class TestDll {
 

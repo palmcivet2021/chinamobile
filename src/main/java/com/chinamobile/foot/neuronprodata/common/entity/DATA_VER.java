@@ -1,10 +1,7 @@
-package com.chinamobile.foot.neurondata;
+package com.chinamobile.foot.neuronprodata.common.entity;
 
 import com.sun.jna.Structure;
 import com.sun.jna.Union;
-
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * 数据流的版本
@@ -18,13 +15,11 @@ public class DATA_VER extends Union {
     public static class ByValue extends DATA_VER implements Union.ByValue {}
 
 
-    @Structure.FieldOrder({"BuildNumb", "Revision", "Minor", "Major"})
+    @FieldOrder({"BuildNumb", "Revision", "Minor", "Major"})
     public static class VersionStruct extends Structure{
         public byte BuildNumb;//Build number
         public byte Revision; //Revision number
         public byte Minor;    //Subversion number
         public byte Major;    //Major version number
     }
-
-
 }
