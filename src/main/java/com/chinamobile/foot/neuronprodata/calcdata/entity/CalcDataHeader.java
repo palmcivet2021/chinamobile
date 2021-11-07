@@ -22,12 +22,17 @@ public class CalcDataHeader extends Structure {
     // Frame data index
     public int FrameIndex;
     // Reserved, only enable this package has 64bytes length
-    public long Reserved1;
+    public int Reserved1;
     // Reserved, only enable this package has 64bytes length
-    public long Reserved2;
+    public int Reserved2;
     // Reserved, only enable this package has 64bytes length
-    public long Reserved3;
+    public int Reserved3;
     // Package end token: 0xEEFF
     public short Token2;
 
+    public static class ByReference extends CalcDataHeader implements Structure.ByReference {
+    }
+
+    public static class ByValue extends CalcDataHeader implements Structure.ByValue {
+    }
 }

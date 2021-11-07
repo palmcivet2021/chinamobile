@@ -4,6 +4,7 @@ package com.chinamobile.foot.neuronprodata.calcdata;
 import com.chinamobile.foot.neuronprodata.calcdata.entity.CalcDataHeader;
 import com.sun.jna.Callback;
 import com.sun.jna.Pointer;
+import com.sun.jna.ptr.FloatByReference;
 
 public interface CalculationDataReceived extends Callback {
     /**
@@ -16,5 +17,5 @@ public interface CalculationDataReceived extends Callback {
      * @param data        Float type array pointer,to output binary data.
      *                    Remarks The related information of the data stream can be obtained from CalcDataHeader.
      */
-    void invoke(Pointer customedObj, Pointer sender, CalcDataHeader header, float data);
+    void invoke(Pointer customedObj, Pointer sender, CalcDataHeader.ByReference header, FloatByReference data);
 }

@@ -28,11 +28,11 @@ public class BvhDataHeader extends Structure {
     // Frame data index
     public int FrameIndex;
     // Reserved, only enable this package has 64bytes length
-    public long Reserved;
+    public int Reserved;
     // Reserved, only enable this package has 64bytes length
-    public long Reserved1;
+    public int Reserved1;
     // Reserved, only enable this package has 64bytes length
-    public long Reserved2;
+    public int Reserved2;
     // Package end token: 0xEEFF
     public short Token2;
 

@@ -7,7 +7,7 @@ import com.sun.jna.Pointer;
 
 public class NeuronDataReaderTest1 {
     public static void main(String[] args) {
-        new BvhDataThread().start();
+        //new BvhDataThread().start();
         new CalulationDataThread().start();
         //new CmdThread().start();
     }

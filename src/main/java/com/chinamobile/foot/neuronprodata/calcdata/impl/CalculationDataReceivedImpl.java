@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.chinamobile.foot.neuronprodata.calcdata.CalculationDataReceived;
 import com.chinamobile.foot.neuronprodata.calcdata.entity.CalcDataHeader;
 import com.sun.jna.Pointer;
+import com.sun.jna.ptr.FloatByReference;
 
 public class CalculationDataReceivedImpl implements CalculationDataReceived {
     private static int i = 1;
@@ -16,10 +17,10 @@ public class CalculationDataReceivedImpl implements CalculationDataReceived {
      * @param header      CalcDataHeader type pointer,to output the calculation data format information.
      * @param data        Float type array pointer,to output binary data.
      */
-    public void invoke(Pointer customedObj, Pointer sender, CalcDataHeader header, float data) {
+    public void invoke(Pointer customedObj, Pointer sender, CalcDataHeader.ByReference header, FloatByReference data) {
         System.out.printf("*******Invoke CalculationDataReceivedImpl  successfully!******,i=" + i++);
         System.out.println("sender:" + sender);
         System.out.println("header:" + JSONObject.toJSONString(header));
-        System.out.println("data:" + data);
+        System.out.println("data:" + data.getValue());
     }
 }
