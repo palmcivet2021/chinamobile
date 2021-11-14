@@ -5,20 +5,18 @@ import com.chinamobile.auth.annotation.JwtIgnore;
 import com.chinamobile.auth.bean.Audience;
 import com.chinamobile.auth.util.JwtTokenUtil;
 import com.chinamobile.auth.util.ResultSet;
-import com.chinamobile.foot.bean.UserInfo;
-import com.chinamobile.foot.service.BaseDataService;
+import com.chinamobile.foot.base.service.BaseDataService;
+import com.chinamobile.foot.userinfo.bean.UserInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import sun.misc.BASE64Encoder;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
 /**
  * ========================
@@ -40,7 +38,7 @@ public class AdminUserController {
     private String token = null;
 
     @RequestMapping("/hello")
-    public String hello(){
+    public String hello() {
         return "Future Auth Hello!";
     }
 

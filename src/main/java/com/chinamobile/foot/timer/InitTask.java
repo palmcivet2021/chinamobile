@@ -2,13 +2,16 @@ package com.chinamobile.foot.timer;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.chinamobile.foot.bean.*;
-import com.chinamobile.foot.ehead.EheadServer;
-import com.chinamobile.foot.serialport.SerialServer;
-import com.chinamobile.foot.service.BaseDataService;
-import com.chinamobile.foot.service.BodyDataService;
-import com.chinamobile.foot.service.FootDataService;
-import com.chinamobile.foot.shoepad.ShoePadServer;
+import com.chinamobile.foot.base.service.BaseDataService;
+import com.chinamobile.foot.bodydata.bean.BodyData;
+import com.chinamobile.foot.bodydata.bean.BodyDataDetail;
+import com.chinamobile.foot.bodydata.service.BodyDataService;
+import com.chinamobile.foot.eheaddata.obtain.EheadServer;
+import com.chinamobile.foot.footdata.bean.FootData;
+import com.chinamobile.foot.footdata.bean.FootDataDetail;
+import com.chinamobile.foot.footdata.service.FootDataService;
+import com.chinamobile.foot.shoepaddata.obtain.ShoePadServer;
+import com.chinamobile.foot.tablerecord.bean.TableRecord;
 import com.chinamobile.foot.util.HttpUtil;
 import com.chinamobile.foot.util.Sha256Utils;
 import com.chinamobile.foot.util.ThreadPoolUtil;
@@ -20,13 +23,15 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
-import org.springframework.util.StringUtils;
 
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
-import java.util.concurrent.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 @Component
 public class InitTask implements ApplicationRunner {

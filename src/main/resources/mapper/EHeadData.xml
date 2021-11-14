@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.chinamobile.foot.dao.EHeadDataDao">
+<mapper namespace="com.chinamobile.foot.eheaddata.dao.EHeadDataDao">
 
-    <resultMap id="userDataMap" type="com.chinamobile.foot.bean.EHeadData">
-        <result property="id" column="id" />
-        <result property="channel_1" column="channel_1" />
-        <result property="channel_2" column="channel_2" />
-        <result property="channel_3" column="channel_3" />
-        <result property="channel_4" column="channel_4" />
-        <result property="channel_5" column="channel_5" />
-        <result property="channel_6" column="channel_6" />
-        <result property="channel_7" column="channel_7" />
-        <result property="channel_8" column="channel_8" />
-        <result property="deal_time" column="deal_time" />
+    <resultMap id="userDataMap" type="com.chinamobile.foot.eheaddata.bean.EHeadData">
+        <result property="id" column="id"/>
+        <result property="channel_1" column="channel_1"/>
+        <result property="channel_2" column="channel_2"/>
+        <result property="channel_3" column="channel_3"/>
+        <result property="channel_4" column="channel_4"/>
+        <result property="channel_5" column="channel_5"/>
+        <result property="channel_6" column="channel_6"/>
+        <result property="channel_7" column="channel_7"/>
+        <result property="channel_8" column="channel_8"/>
+        <result property="deal_time" column="deal_time"/>
     </resultMap>
 
     <sql id="dataColumn">
-        channel_1,
+        channel_1
+        ,
         channel_2,
         channel_3,
         channel_4,
@@ -28,47 +29,48 @@
     </sql>
 
 
-    <insert id="insertData" parameterType="com.chinamobile.foot.bean.EHeadData">
+    <insert id="insertData" parameterType="com.chinamobile.foot.eheaddata.bean.EHeadData">
         <selectKey keyColumn="id" keyProperty="id" order="AFTER" resultType="int">
-            select  @@IDENTITY AS id
+            select @@IDENTITY AS id
         </selectKey>
-        INSERT INTO tb_ehead_data(<include refid="dataColumn" />)
+        INSERT INTO tb_ehead_data(<include refid="dataColumn"/>)
         values(
-            #{channel_1},
-            #{channel_2},
-            #{channel_3},
-            #{channel_4},
-            #{channel_5},
-            #{channel_6},
-            #{channel_7},
-            #{channel_8},
-            #{deal_time}
+        #{channel_1},
+        #{channel_2},
+        #{channel_3},
+        #{channel_4},
+        #{channel_5},
+        #{channel_6},
+        #{channel_7},
+        #{channel_8},
+        #{deal_time}
         )
     </insert>
 
     <insert id="insertBatchData" parameterType="java.util.List">
         <selectKey keyColumn="id" keyProperty="id" order="AFTER" resultType="int">
-            select  @@IDENTITY AS id
+            select @@IDENTITY AS id
         </selectKey>
-        INSERT INTO tb_ehead_data(<include refid="dataColumn" />)
+        INSERT INTO tb_ehead_data(<include refid="dataColumn"/>)
         values
-        <foreach collection="list" item="item" index="index"  separator=",">
-          <trim prefix=" (" suffix=")" suffixOverrides="," >
-              #{item.channel_1},
-              #{item.channel_2},
-              #{item.channel_3},
-              #{item.channel_4},
-              #{item.channel_5},
-              #{item.channel_6},
-              #{item.channel_7},
-              #{item.channel_8},
-              #{item.deal_time}
-          </trim>
+        <foreach collection="list" item="item" index="index" separator=",">
+            <trim prefix=" (" suffix=")" suffixOverrides=",">
+                #{item.channel_1},
+                #{item.channel_2},
+                #{item.channel_3},
+                #{item.channel_4},
+                #{item.channel_5},
+                #{item.channel_6},
+                #{item.channel_7},
+                #{item.channel_8},
+                #{item.deal_time}
+            </trim>
         </foreach>
     </insert>
 
     <select id="getDataList" resultMap="userDataMap" parameterType="Map">
-        select id,<include refid="dataColumn" />
+        select id,
+        <include refid="dataColumn"/>
         from tb_ehead_data
         <where>
             <if test="start_time != null and start_time != ''">
@@ -81,12 +83,12 @@
     </select>
 
 
-    <select id="getData" resultType="com.chinamobile.foot.bean.EHeadData" parameterType="Map">
-        select id,<include refid="dataColumn" />
+    <select id="getData" resultType="com.chinamobile.foot.eheaddata.bean.EHeadData" parameterType="Map">
+        select id,
+        <include refid="dataColumn"/>
         from tb_ehead_data
         where id = #{id}
     </select>
-
 
 
 </mapper>

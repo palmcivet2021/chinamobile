@@ -1,12 +1,10 @@
 package com.chinamobile.foot.util;
 
-import com.chinamobile.foot.bean.ShoePadData;
-import com.chinamobile.foot.service.BaseDataService;
+import com.chinamobile.foot.shoepaddata.bean.ShoePadData;
 import gnu.io.*;
 import lombok.SneakyThrows;
 
 import java.io.*;
-import java.net.InetAddress;
 import java.net.Socket;
 import java.util.*;
 import java.util.concurrent.ExecutorService;

@@ -1,11 +1,12 @@
 package com.chinamobile.foot.util;
 
-import com.chinamobile.foot.bean.ShoePadData;
-import com.chinamobile.foot.service.BaseDataService;
+import com.chinamobile.foot.base.service.BaseDataService;
+import com.chinamobile.foot.shoepaddata.bean.ShoePadData;
 import gnu.io.*;
 
-import java.io.*;
-import java.net.Socket;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.regex.Matcher;

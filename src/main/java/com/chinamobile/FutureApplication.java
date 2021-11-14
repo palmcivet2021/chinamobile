@@ -8,7 +8,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @EnableScheduling
 @SpringBootApplication
-@MapperScan(basePackages = {"com.chinamobile.foot.dao"})
+@MapperScan(basePackages = {"com.chinamobile.foot"})
 public class FutureApplication {
     public static void main(String[] args){
         //SpringApplication.run(FutureApplication.class, args);

@@ -1,39 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.chinamobile.foot.dao.ShoePadDataDao">
+<mapper namespace="com.chinamobile.foot.shoepaddata.dao.ShoePadDataDao">
 
-    <resultMap id="userDataMap" type="com.chinamobile.foot.bean.ShoePadData">
-        <result property="id" column="id" />
-        <result property="userid" column="userid" />
-        <result property="ad1" column="ad1" />
-        <result property="ad2" column="ad2" />
-        <result property="ad3" column="ad3" />
-        <result property="ad4" column="ad4" />
-        <result property="ad5" column="ad5" />
-        <result property="ad6" column="ad6" />
-        <result property="ad7" column="ad7" />
-        <result property="ad8" column="ad8" />
-        <result property="acceleration_x" column="acceleration_x" />
-        <result property="acceleration_y" column="acceleration_y" />
-        <result property="acceleration_z" column="acceleration_z" />
-        <result property="angular_speed_x" column="angular_speed_x" />
-        <result property="angular_speed_y" column="angular_speed_y" />
-        <result property="angular_speed_z" column="angular_speed_z" />
-        <result property="angle_x" column="angle_x" />
-        <result property="angle_y" column="angle_y" />
-        <result property="angle_z" column="angle_z" />
-        <result property="magnetic_strength_x" column="magnetic_strength_x" />
-        <result property="magnetic_strength_y" column="magnetic_strength_y" />
-        <result property="magnetic_strength_z" column="magnetic_strength_z" />
-        <result property="deal_time" column="deal_time" />
+    <resultMap id="userDataMap" type="com.chinamobile.foot.shoepaddata.bean.ShoePadData">
+        <result property="id" column="id"/>
+        <result property="userid" column="userid"/>
+        <result property="ad1" column="ad1"/>
+        <result property="ad2" column="ad2"/>
+        <result property="ad3" column="ad3"/>
+        <result property="ad4" column="ad4"/>
+        <result property="ad5" column="ad5"/>
+        <result property="ad6" column="ad6"/>
+        <result property="ad7" column="ad7"/>
+        <result property="ad8" column="ad8"/>
+        <result property="acceleration_x" column="acceleration_x"/>
+        <result property="acceleration_y" column="acceleration_y"/>
+        <result property="acceleration_z" column="acceleration_z"/>
+        <result property="angular_speed_x" column="angular_speed_x"/>
+        <result property="angular_speed_y" column="angular_speed_y"/>
+        <result property="angular_speed_z" column="angular_speed_z"/>
+        <result property="angle_x" column="angle_x"/>
+        <result property="angle_y" column="angle_y"/>
+        <result property="angle_z" column="angle_z"/>
+        <result property="magnetic_strength_x" column="magnetic_strength_x"/>
+        <result property="magnetic_strength_y" column="magnetic_strength_y"/>
+        <result property="magnetic_strength_z" column="magnetic_strength_z"/>
+        <result property="deal_time" column="deal_time"/>
     </resultMap>
 
-    <resultMap id="userDataMap2" type="com.chinamobile.foot.bean.ShoePadData" extends="userDataMap">
-        <result property="show_time" column="show_time" />
+    <resultMap id="userDataMap2" type="com.chinamobile.foot.shoepaddata.bean.ShoePadData" extends="userDataMap">
+        <result property="show_time" column="show_time"/>
     </resultMap>
 
     <sql id="dataColumn">
-        userid,
+        userid
+        ,
         ad1,
         ad2,
         ad3,
@@ -58,7 +59,8 @@
     </sql>
 
     <sql id="dataColumn2">
-        userid,
+        userid
+        ,
         ad1,
         ad2,
         ad3,
@@ -84,100 +86,101 @@
     </sql>
 
 
-    <resultMap id="shoePadDataMap" type="com.chinamobile.foot.bean.ShoePadData2">
-        <result property="id" column="id" />
-        <result property="userid" column="userid" />
-        <result property="ad1" column="ad1" />
-        <result property="ad2" column="ad2" />
-        <result property="ad3" column="ad3" />
-        <result property="ad4" column="ad4" />
-        <result property="ad5" column="ad5" />
-        <result property="ad6" column="ad6" />
-        <result property="ad7" column="ad7" />
-        <result property="ad8" column="ad8" />
-        <result property="acceleration_x" column="acceleration_x" />
-        <result property="acceleration_y" column="acceleration_y" />
-        <result property="acceleration_z" column="acceleration_z" />
-        <result property="angular_speed_x" column="angular_speed_x" />
-        <result property="angular_speed_y" column="angular_speed_y" />
-        <result property="angular_speed_z" column="angular_speed_z" />
-        <result property="angle_x" column="angle_x" />
-        <result property="angle_y" column="angle_y" />
-        <result property="angle_z" column="angle_z" />
-        <result property="magnetic_strength_x" column="magnetic_strength_x" />
-        <result property="magnetic_strength_y" column="magnetic_strength_y" />
-        <result property="magnetic_strength_z" column="magnetic_strength_z" />
-        <result property="show_time" column="show_time" />
+    <resultMap id="shoePadDataMap" type="com.chinamobile.foot.shoepaddata.bean.ShoePadData2">
+        <result property="id" column="id"/>
+        <result property="userid" column="userid"/>
+        <result property="ad1" column="ad1"/>
+        <result property="ad2" column="ad2"/>
+        <result property="ad3" column="ad3"/>
+        <result property="ad4" column="ad4"/>
+        <result property="ad5" column="ad5"/>
+        <result property="ad6" column="ad6"/>
+        <result property="ad7" column="ad7"/>
+        <result property="ad8" column="ad8"/>
+        <result property="acceleration_x" column="acceleration_x"/>
+        <result property="acceleration_y" column="acceleration_y"/>
+        <result property="acceleration_z" column="acceleration_z"/>
+        <result property="angular_speed_x" column="angular_speed_x"/>
+        <result property="angular_speed_y" column="angular_speed_y"/>
+        <result property="angular_speed_z" column="angular_speed_z"/>
+        <result property="angle_x" column="angle_x"/>
+        <result property="angle_y" column="angle_y"/>
+        <result property="angle_z" column="angle_z"/>
+        <result property="magnetic_strength_x" column="magnetic_strength_x"/>
+        <result property="magnetic_strength_y" column="magnetic_strength_y"/>
+        <result property="magnetic_strength_z" column="magnetic_strength_z"/>
+        <result property="show_time" column="show_time"/>
     </resultMap>
 
 
-    <insert id="insertData" parameterType="com.chinamobile.foot.bean.ShoePadData">
+    <insert id="insertData" parameterType="com.chinamobile.foot.shoepaddata.bean.ShoePadData">
         <selectKey keyColumn="id" keyProperty="id" order="AFTER" resultType="int">
-            select  @@IDENTITY AS id
+            select @@IDENTITY AS id
         </selectKey>
-        INSERT INTO tb_shoepad_data(<include refid="dataColumn" />)
+        INSERT INTO tb_shoepad_data(<include refid="dataColumn"/>)
         values(
-            #{userid},
-            #{ad1},
-            #{ad2},
-            #{ad3},
-            #{ad4},
-            #{ad5},
-            #{ad6},
-            #{ad7},
-            #{ad8},
-            #{acceleration_x},
-            #{acceleration_y},
-            #{acceleration_z},
-            #{angular_speed_x},
-            #{angular_speed_y},
-            #{angular_speed_z},
-            #{angle_x},
-            #{angle_y},
-            #{angle_z},
-            #{magnetic_strength_x},
-            #{magnetic_strength_y},
-            #{magnetic_strength_z},
-            #{deal_time}
+        #{userid},
+        #{ad1},
+        #{ad2},
+        #{ad3},
+        #{ad4},
+        #{ad5},
+        #{ad6},
+        #{ad7},
+        #{ad8},
+        #{acceleration_x},
+        #{acceleration_y},
+        #{acceleration_z},
+        #{angular_speed_x},
+        #{angular_speed_y},
+        #{angular_speed_z},
+        #{angle_x},
+        #{angle_y},
+        #{angle_z},
+        #{magnetic_strength_x},
+        #{magnetic_strength_y},
+        #{magnetic_strength_z},
+        #{deal_time}
         )
     </insert>
 
     <insert id="insertBatchData" parameterType="java.util.List">
         <selectKey keyColumn="id" keyProperty="id" order="AFTER" resultType="int">
-            select  @@IDENTITY AS id
+            select @@IDENTITY AS id
         </selectKey>
-        INSERT INTO tb_shoepad_data(<include refid="dataColumn" />)
+        INSERT INTO tb_shoepad_data(<include refid="dataColumn"/>)
         values
-        <foreach collection="list" item="item" index="index"  separator=",">
-          <trim prefix=" (" suffix=")" suffixOverrides="," >
-              #{item.userid},
-              #{item.ad1},
-              #{item.ad2},
-              #{item.ad3},
-              #{item.ad4},
-              #{item.ad5},
-              #{item.ad6},
-              #{item.ad7},
-              #{item.ad8},
-              #{item.acceleration_x},
-              #{item.acceleration_y},
-              #{item.acceleration_z},
-              #{item.angular_speed_x},
-              #{item.angular_speed_y},
-              #{item.angular_speed_z},
-              #{item.angle_x},
-              #{item.angle_y},
-              #{item.angle_z},
-              #{item.magnetic_strength_x},
-              #{item.magnetic_strength_y},
-              #{item.magnetic_strength_z},
-              #{item.deal_time}
-          </trim>
+        <foreach collection="list" item="item" index="index" separator=",">
+            <trim prefix=" (" suffix=")" suffixOverrides=",">
+                #{item.userid},
+                #{item.ad1},
+                #{item.ad2},
+                #{item.ad3},
+                #{item.ad4},
+                #{item.ad5},
+                #{item.ad6},
+                #{item.ad7},
+                #{item.ad8},
+                #{item.acceleration_x},
+                #{item.acceleration_y},
+                #{item.acceleration_z},
+                #{item.angular_speed_x},
+                #{item.angular_speed_y},
+                #{item.angular_speed_z},
+                #{item.angle_x},
+                #{item.angle_y},
+                #{item.angle_z},
+                #{item.magnetic_strength_x},
+                #{item.magnetic_strength_y},
+                #{item.magnetic_strength_z},
+                #{item.deal_time}
+            </trim>
         </foreach>
     </insert>
 
     <select id="getDataList" resultMap="userDataMap2" parameterType="Map">
-        select id,<include refid="dataColumn2" />
+        select id,
+        <include refid="dataColumn2"/>
         from tb_shoepad_data
         <where>
             <if test="start_time != null and start_time != ''">
@@ -190,52 +193,53 @@
     </select>
 
 
-    <select id="getData" resultType="com.chinamobile.foot.bean.ShoePadData" parameterType="Map">
-        select id,<include refid="dataColumn2" />
+    <select id="getData" resultType="com.chinamobile.foot.shoepaddata.bean.ShoePadData" parameterType="Map">
+        select id,
+        <include refid="dataColumn2"/>
         from tb_shoepad_data
         where id = #{id}
     </select>
 
 
-    <select id="getShoePadData" resultType="com.chinamobile.foot.bean.ShoePadData2" parameterType="Map">
+    <select id="getShoePadData" resultType="com.chinamobile.foot.shoepaddata.bean.ShoePadData2" parameterType="Map">
         SELECT GROUP_CONCAT(id) id,
-            GROUP_CONCAT(userid)              userid,
-            GROUP_CONCAT(ad1)                 ad1,
-            GROUP_CONCAT(ad2)                 ad2,
-            GROUP_CONCAT(ad3)                 ad3,
-            GROUP_CONCAT(ad4)                 ad4,
-            GROUP_CONCAT(ad5)                 ad5,
-            GROUP_CONCAT(ad6)                 ad6,
-            GROUP_CONCAT(ad7)                 ad7,
-            GROUP_CONCAT(ad8)                 ad8,
-            GROUP_CONCAT(acceleration_x)      acceleration_x,
-            GROUP_CONCAT(acceleration_y)      acceleration_y,
-            GROUP_CONCAT(acceleration_z)      acceleration_z,
-            GROUP_CONCAT(angular_speed_x)     angular_speed_x,
-            GROUP_CONCAT(angular_speed_y)     angular_speed_y,
-            GROUP_CONCAT(angular_speed_z)     angular_speed_z,
-            GROUP_CONCAT(angle_x)             angle_x,
-            GROUP_CONCAT(angle_y)             angle_y,
-            GROUP_CONCAT(angle_z)             angle_z,
-            GROUP_CONCAT(magnetic_strength_x) magnetic_strength_x,
-            GROUP_CONCAT(magnetic_strength_y) magnetic_strength_y,
-            GROUP_CONCAT(magnetic_strength_z) magnetic_strength_z,
-            GROUP_CONCAT(deal_time)           deal_time,
-            GROUP_CONCAT(show_time)           show_time
+        GROUP_CONCAT(userid) userid,
+        GROUP_CONCAT(ad1) ad1,
+        GROUP_CONCAT(ad2) ad2,
+        GROUP_CONCAT(ad3) ad3,
+        GROUP_CONCAT(ad4) ad4,
+        GROUP_CONCAT(ad5) ad5,
+        GROUP_CONCAT(ad6) ad6,
+        GROUP_CONCAT(ad7) ad7,
+        GROUP_CONCAT(ad8) ad8,
+        GROUP_CONCAT(acceleration_x) acceleration_x,
+        GROUP_CONCAT(acceleration_y) acceleration_y,
+        GROUP_CONCAT(acceleration_z) acceleration_z,
+        GROUP_CONCAT(angular_speed_x) angular_speed_x,
+        GROUP_CONCAT(angular_speed_y) angular_speed_y,
+        GROUP_CONCAT(angular_speed_z) angular_speed_z,
+        GROUP_CONCAT(angle_x) angle_x,
+        GROUP_CONCAT(angle_y) angle_y,
+        GROUP_CONCAT(angle_z) angle_z,
+        GROUP_CONCAT(magnetic_strength_x) magnetic_strength_x,
+        GROUP_CONCAT(magnetic_strength_y) magnetic_strength_y,
+        GROUP_CONCAT(magnetic_strength_z) magnetic_strength_z,
+        GROUP_CONCAT(deal_time) deal_time,
+        GROUP_CONCAT(show_time) show_time
         FROM(
-            select id,<include refid="dataColumn2" />
-            from tb_shoepad_data
-            <where>
-                <if test="start_time != null and start_time != ''">
-                    and <![CDATA[ from_unixtime(deal_time,'%Y-%m-%d %H:%i:%S') >= #{start_time} ]]>
-                </if>
-                <if test="end_time != null and end_time != ''">
-                    and <![CDATA[ from_unixtime(deal_time,'%Y-%m-%d %H:%i:%S') <= #{end_time} ]]>
-                </if>
-            </where>
+        select id,
+        <include refid="dataColumn2"/>
+        from tb_shoepad_data
+        <where>
+            <if test="start_time != null and start_time != ''">
+                and <![CDATA[ from_unixtime(deal_time,'%Y-%m-%d %H:%i:%S') >= #{start_time} ]]>
+            </if>
+            <if test="end_time != null and end_time != ''">
+                and <![CDATA[ from_unixtime(deal_time,'%Y-%m-%d %H:%i:%S') <= #{end_time} ]]>
+            </if>
+        </where>
         )x
     </select>
-
 
 
 </mapper>

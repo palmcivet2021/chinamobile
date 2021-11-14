@@ -1,50 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.chinamobile.foot.dao.EHeadDataResultDao">
+<mapper namespace="com.chinamobile.foot.eheaddata.dao.EHeadDataResultDao">
 
-    <resultMap id="userDataMap" type="com.chinamobile.foot.bean.EHeadDataResult">
-        <result property="id" column="id" />
-        <result property="userid" column="userid" />
-        <result property="result" column="result" />
-        <result property="deal_time" column="deal_time" />
+    <resultMap id="userDataMap" type="com.chinamobile.foot.eheaddata.bean.EHeadDataResult">
+        <result property="id" column="id"/>
+        <result property="userid" column="userid"/>
+        <result property="result" column="result"/>
+        <result property="deal_time" column="deal_time"/>
     </resultMap>
 
     <sql id="dataColumn">
-        userid,
+        userid
+        ,
         result,
         deal_time
     </sql>
 
 
-    <insert id="insertData" parameterType="com.chinamobile.foot.bean.EHeadDataResult">
+    <insert id="insertData" parameterType="com.chinamobile.foot.eheaddata.bean.EHeadDataResult">
         <selectKey keyColumn="id" keyProperty="id" order="AFTER" resultType="int">
-            select  @@IDENTITY AS id
+            select @@IDENTITY AS id
         </selectKey>
-        INSERT INTO tb_ehead_result(<include refid="dataColumn" />)
+        INSERT INTO tb_ehead_result(<include refid="dataColumn"/>)
         values(
-            #{userid},
-            #{result},
-            #{deal_time}
+        #{userid},
+        #{result},
+        #{deal_time}
         )
     </insert>
 
     <insert id="insertBatchData" parameterType="java.util.List">
         <selectKey keyColumn="id" keyProperty="id" order="AFTER" resultType="int">
-            select  @@IDENTITY AS id
+            select @@IDENTITY AS id
         </selectKey>
-        INSERT INTO tb_ehead_result(<include refid="dataColumn" />)
+        INSERT INTO tb_ehead_result(<include refid="dataColumn"/>)
         values
-        <foreach collection="list" item="item" index="index"  separator=",">
-          <trim prefix=" (" suffix=")" suffixOverrides="," >
-              #{item.userid},
-              #{item.result},
-              #{item.deal_time}
-          </trim>
+        <foreach collection="list" item="item" index="index" separator=",">
+            <trim prefix=" (" suffix=")" suffixOverrides=",">
+                #{item.userid},
+                #{item.result},
+                #{item.deal_time}
+            </trim>
         </foreach>
     </insert>
 
     <select id="getDataList" resultMap="userDataMap" parameterType="Map">
-        select id,<include refid="dataColumn" />
+        select id,
+        <include refid="dataColumn"/>
         from tb_ehead_result
         <where>
             <if test="start_time != null and start_time != ''">
@@ -56,13 +58,11 @@
         </where>
     </select>
 
-
-    <select id="getData" resultType="com.chinamobile.foot.bean.EHeadDataResult" parameterType="Map">
-        select id,<include refid="dataColumn" />
+    <select id="getData" resultType="com.chinamobile.foot.eheaddata.bean.EHeadDataResult" parameterType="Map">
+        select id,
+        <include refid="dataColumn"/>
         from tb_ehead_result
         where id = (select max(id) from tb_ehead_result)
     </select>
-
-
 
 </mapper>

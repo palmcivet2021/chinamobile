@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.chinamobile.foot.dao.FootDataDetailDao">
+<mapper namespace="com.chinamobile.foot.footdata.dao.FootDataDetailDao">
 
     <sql id="userDataColumn">
-        foot_scan_id,
+        foot_scan_id
+        ,
         left_length,
         left_width,
         left_height,
@@ -29,38 +30,39 @@
         foot_presure_img
     </sql>
 
-    <insert id="insertData" parameterType="com.chinamobile.foot.bean.FootDataDetail">
-        INSERT INTO tb_foot_data_detail(<include refid="userDataColumn" />)
+    <insert id="insertData" parameterType="com.chinamobile.foot.footdata.bean.FootDataDetail">
+        INSERT INTO tb_foot_data_detail(<include refid="userDataColumn"/>)
         values(
-            #{foot_scan_id},
-            #{left_length},
-            #{left_width},
-            #{left_height},
-            #{right_length},
-            #{right_width},
-            #{right_height},
-            #{foot_presure_left},
-            #{foot_presure_right},
-            #{foot_presure_left_percent},
-            #{foot_presure_right_percent},
-            #{arch_index_left},
-            #{arch_index_right},
-            #{pressure_area_left_ad},
-            #{pressure_area_left_bd},
-            #{pressure_area_left_cd},
-            #{pressure_area_right_ad},
-            #{pressure_area_right_bd},
-            #{pressure_area_right_cd},
-            #{foot_type_left},
-            #{foot_type_right},
-            #{shoe_size_left},
-            #{shoe_size_right},
-            #{foot_presure_img}
+        #{foot_scan_id},
+        #{left_length},
+        #{left_width},
+        #{left_height},
+        #{right_length},
+        #{right_width},
+        #{right_height},
+        #{foot_presure_left},
+        #{foot_presure_right},
+        #{foot_presure_left_percent},
+        #{foot_presure_right_percent},
+        #{arch_index_left},
+        #{arch_index_right},
+        #{pressure_area_left_ad},
+        #{pressure_area_left_bd},
+        #{pressure_area_left_cd},
+        #{pressure_area_right_ad},
+        #{pressure_area_right_bd},
+        #{pressure_area_right_cd},
+        #{foot_type_left},
+        #{foot_type_right},
+        #{shoe_size_left},
+        #{shoe_size_right},
+        #{foot_presure_img}
         )
     </insert>
 
-    <select id="getData" resultType="com.chinamobile.foot.bean.FootDataDetail" parameterType="Map">
-        select <include refid="userDataColumn" />
+    <select id="getData" resultType="com.chinamobile.foot.footdata.bean.FootDataDetail" parameterType="Map">
+        select
+        <include refid="userDataColumn"/>
         from tb_foot_data_detail
         where foot_scan_id = #{foot_scan_id}
     </select>

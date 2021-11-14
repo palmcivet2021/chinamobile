@@ -3,10 +3,10 @@ package com.chinamobile.foot.timer;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.chinamobile.foot.bean.BodyData;
-import com.chinamobile.foot.bean.FootData;
-import com.chinamobile.foot.service.BodyDataService;
-import com.chinamobile.foot.service.FootDataService;
+import com.chinamobile.foot.bodydata.bean.BodyData;
+import com.chinamobile.foot.bodydata.service.BodyDataService;
+import com.chinamobile.foot.footdata.bean.FootData;
+import com.chinamobile.foot.footdata.service.FootDataService;
 import com.chinamobile.foot.util.HttpUtil;
 import com.chinamobile.foot.util.Sha256Utils;
 import com.google.gson.Gson;
@@ -27,9 +27,7 @@ public class HttpScheduleTask {
     @Autowired
     private BodyDataService bodyDataService;
 
-    public void schedule(){
-
-
+    public void schedule() {
 
 
         //ScheduledThreadPoolExecutor pool = new ScheduledThreadPoolExecutor(3);
@@ -52,13 +50,13 @@ public class HttpScheduleTask {
         int perpage = 20;  //每页条数，默认20
 
         //String json = "access_token=ab964d45eea731050bb632d624b7549c&end_time=2021-4-1 23:59:59&page=1&perpage=10&scan_type=2&start_time=2019-3-26 00:00:00";
-        Map map=new LinkedHashMap();
-        map.put("access_token","ab964d45eea731050bb632d624b7549c");
-        map.put("end_time","2021-4-1 23:59:59");
-        map.put("page",page);
-        map.put("perpage",perpage);
-        map.put("scan_type","2");
-        map.put("start_time","2019-3-26 00:00:00");
+        Map map = new LinkedHashMap();
+        map.put("access_token", "ab964d45eea731050bb632d624b7549c");
+        map.put("end_time", "2021-4-1 23:59:59");
+        map.put("page", page);
+        map.put("perpage", perpage);
+        map.put("scan_type", "2");
+        map.put("start_time", "2019-3-26 00:00:00");
 
         /*
         //用户中心>用户数据管理>用户数据列表
@@ -85,30 +83,30 @@ public class HttpScheduleTask {
 
         int count = insertFootData(map);
         int maxPage = count % perpage == 0 ? count / perpage : count / perpage + 1;
-        while(page < maxPage){
+        while (page < maxPage) {
             page++;
-            map.put("page",page);
+            map.put("page", page);
             insertFootData(map);
         }
 
     }
 
     //返回总条数
-    private int insertFootData(Map map){
+    private int insertFootData(Map map) {
         int count = 0;
 
-        Gson gson=new Gson();
-        String params=gson.toJson(map);
-        String url="https://api.semsx.com/Admin/FootScan/getCompanyScanList";
+        Gson gson = new Gson();
+        String params = gson.toJson(map);
+        String url = "https://api.semsx.com/Admin/FootScan/getCompanyScanList";
         String data = HttpUtil.post(url, params);
 
         JSONObject jsonObject = JSONObject.parseObject(data);
         int errno = jsonObject.getIntValue("errno");
         String errmsg = jsonObject.getString("errmsg");
-        if(errno == 0 && errmsg.equals("success")){
+        if (errno == 0 && errmsg.equals("success")) {
             count = jsonObject.getJSONObject("result").getIntValue("count");
             JSONArray jsonArray = jsonObject.getJSONObject("result").getJSONArray("data");
-            for(int i=0; i<jsonArray.size(); i++){
+            for (int i = 0; i < jsonArray.size(); i++) {
                 FootData footData = gson.fromJson(String.valueOf(jsonArray.getJSONObject(i)), FootData.class);
                 //System.out.println(footData.getFoot_scan_id());
                 footDataService.insertFootData(footData);
@@ -121,24 +119,24 @@ public class HttpScheduleTask {
 
     //
     @Scheduled(cron = "0 27 23 * * ?")
-    private void insertBodyData(){
-        Gson gson=new Gson();
-        Map<String, String> map=new LinkedHashMap();
-        map.put("start_time","2021-04-20 18:05:00");
-        map.put("end_time","2021-04-20 18:07:00");
-        map.put("device_code","EC:B9:77:13:3E:7E");
+    private void insertBodyData() {
+        Gson gson = new Gson();
+        Map<String, String> map = new LinkedHashMap();
+        map.put("start_time", "2021-04-20 18:05:00");
+        map.put("end_time", "2021-04-20 18:07:00");
+        map.put("device_code", "EC:B9:77:13:3E:7E");
         //map.put("timestamp","12345");
-        map.put("timestamp",String.valueOf(System.currentTimeMillis()));
+        map.put("timestamp", String.valueOf(System.currentTimeMillis()));
         //map.put("sign","67c23f50f9b41f36fda4c18a886a3c27ee6b948ca758e19a989d996f57791fc1");
         Sha256Utils.getSHA256StrJava(map);
 
-        String params=gson.toJson(map);
-        String url="https://www.aicaring.com/test/ring/external_cooperation/health/data/get/";
+        String params = gson.toJson(map);
+        String url = "https://www.aicaring.com/test/ring/external_cooperation/health/data/get/";
         String data = HttpUtil.post(url, params);
 
         JSONObject jsonObject = JSONObject.parseObject(data);
         boolean status = jsonObject.getBoolean("status");
-        if(status){
+        if (status) {
             int positive_per = jsonObject.getJSONObject("data").getJSONObject("emo_per").getIntValue("positive_per");
             int negative_per = jsonObject.getJSONObject("data").getJSONObject("emo_per").getIntValue("negative_per");
             int neutral_per = jsonObject.getJSONObject("data").getJSONObject("emo_per").getIntValue("neutral_per");
@@ -184,7 +182,6 @@ public class HttpScheduleTask {
         }
 
     }
-
 
 
 }

@@ -1,23 +1,18 @@
 package com.chinamobile.foot.util;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.serializer.SerializerFeature;
-import com.chinamobile.foot.bean.FootData;
+import com.chinamobile.foot.footdata.bean.FootData;
 import com.google.gson.Gson;
 import okhttp3.*;
 
-import java.awt.image.BufferedImage;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.net.URL;
-import java.net.URLConnection;
-import java.util.*;
-
-import com.alibaba.fastjson.JSON;
-
-import javax.imageio.ImageIO;
+import java.util.Arrays;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class HttpUtil {
 

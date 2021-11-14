@@ -1,36 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.chinamobile.foot.dao.FootDataDao">
+<mapper namespace="com.chinamobile.foot.footdata.dao.FootDataDao">
 
-    <resultMap id="userDataMap" type="com.chinamobile.foot.bean.FootData">
-        <result property="foot_scan_id" column="foot_scan_id" />
-        <result property="foot_scan_sign" column="foot_scan_sign" />
-        <result property="left_length" column="left_length" />
-        <result property="right_length" column="right_length" />
-        <result property="left_width" column="left_width" />
-        <result property="right_width" column="right_width" />
-        <result property="left_height" column="left_height" />
-        <result property="right_height" column="right_height" />
-        <result property="left_arch" column="left_arch" />
-        <result property="right_arch" column="right_arch" />
-        <result property="left_heel" column="left_heel" />
-        <result property="right_heel" column="right_heel" />
-        <result property="user_id" column="user_id" />
-        <result property="company_id" column="company_id" />
-        <result property="foot_scan_group_id" column="foot_scan_group_id" />
-        <result property="measure_time" column="measure_time" />
-        <result property="scan_type" column="scan_type" />
-        <result property="store_id" column="store_id" />
-        <result property="phone" column="phone" />
-        <result property="crm_remark_name" column="crm_remark_name" />
-        <result property="crm_remark_remark" column="crm_remark_remark" />
-        <result property="crm_remark_sex" column="crm_remark_sex" />
-        <result property="crm_remark_size" column="crm_remark_size" />
-        <result property="store_name" column="store_name" />
+    <resultMap id="userDataMap" type="com.chinamobile.foot.footdata.bean.FootData">
+        <result property="foot_scan_id" column="foot_scan_id"/>
+        <result property="foot_scan_sign" column="foot_scan_sign"/>
+        <result property="left_length" column="left_length"/>
+        <result property="right_length" column="right_length"/>
+        <result property="left_width" column="left_width"/>
+        <result property="right_width" column="right_width"/>
+        <result property="left_height" column="left_height"/>
+        <result property="right_height" column="right_height"/>
+        <result property="left_arch" column="left_arch"/>
+        <result property="right_arch" column="right_arch"/>
+        <result property="left_heel" column="left_heel"/>
+        <result property="right_heel" column="right_heel"/>
+        <result property="user_id" column="user_id"/>
+        <result property="company_id" column="company_id"/>
+        <result property="foot_scan_group_id" column="foot_scan_group_id"/>
+        <result property="measure_time" column="measure_time"/>
+        <result property="scan_type" column="scan_type"/>
+        <result property="store_id" column="store_id"/>
+        <result property="phone" column="phone"/>
+        <result property="crm_remark_name" column="crm_remark_name"/>
+        <result property="crm_remark_remark" column="crm_remark_remark"/>
+        <result property="crm_remark_sex" column="crm_remark_sex"/>
+        <result property="crm_remark_size" column="crm_remark_size"/>
+        <result property="store_name" column="store_name"/>
     </resultMap>
 
     <sql id="userDataColumn">
-        foot_scan_id,
+        foot_scan_id
+        ,
         foot_scan_sign,
         left_length,
         right_length,
@@ -57,75 +58,76 @@
     </sql>
 
 
-    <insert id="insertData" parameterType="com.chinamobile.foot.bean.FootData">
-        INSERT INTO tb_foot_data(<include refid="userDataColumn" />)
+    <insert id="insertData" parameterType="com.chinamobile.foot.footdata.bean.FootData">
+        INSERT INTO tb_foot_data(<include refid="userDataColumn"/>)
         values(
-            #{foot_scan_id},
-            #{foot_scan_sign},
-            #{left_length},
-            #{right_length},
-            #{left_width},
-            #{right_width},
-            #{left_height},
-            #{right_height},
-            #{left_arch},
-            #{right_arch},
-            #{left_heel},
-            #{right_heel},
-            #{user_id},
-            #{company_id},
-            #{foot_scan_group_id},
-            #{measure_time},
-            #{scan_type},
-            #{store_id},
-            #{phone},
-            #{crm_remark_name},
-            #{crm_remark_remark},
-            #{crm_remark_sex},
-            #{crm_remark_size},
-            #{store_name}
+        #{foot_scan_id},
+        #{foot_scan_sign},
+        #{left_length},
+        #{right_length},
+        #{left_width},
+        #{right_width},
+        #{left_height},
+        #{right_height},
+        #{left_arch},
+        #{right_arch},
+        #{left_heel},
+        #{right_heel},
+        #{user_id},
+        #{company_id},
+        #{foot_scan_group_id},
+        #{measure_time},
+        #{scan_type},
+        #{store_id},
+        #{phone},
+        #{crm_remark_name},
+        #{crm_remark_remark},
+        #{crm_remark_sex},
+        #{crm_remark_size},
+        #{store_name}
         )
     </insert>
 
     <insert id="insertBatchData" parameterType="java.util.List">
-        INSERT INTO tb_foot_data(<include refid="userDataColumn" />)
+        INSERT INTO tb_foot_data(<include refid="userDataColumn"/>)
         values
-        <foreach collection="list" item="item" index="index"  separator=",">
-          <trim prefix=" (" suffix=")" suffixOverrides="," >
-            #{foot_scan_id},
-            #{foot_scan_sign},
-            #{left_length},
-            #{right_length},
-            #{left_width},
-            #{right_width},
-            #{left_height},
-            #{right_height},
-            #{left_arch},
-            #{right_arch},
-            #{left_heel},
-            #{right_heel},
-            #{user_id},
-            #{company_id},
-            #{foot_scan_group_id},
-            #{measure_time},
-            #{scan_type},
-            #{store_id},
-            #{phone},
-            #{crm_remark_name},
-            #{crm_remark_remark},
-            #{crm_remark_sex},
-            #{crm_remark_size},
-            #{store_name}
-          </trim>
+        <foreach collection="list" item="item" index="index" separator=",">
+            <trim prefix=" (" suffix=")" suffixOverrides=",">
+                #{foot_scan_id},
+                #{foot_scan_sign},
+                #{left_length},
+                #{right_length},
+                #{left_width},
+                #{right_width},
+                #{left_height},
+                #{right_height},
+                #{left_arch},
+                #{right_arch},
+                #{left_heel},
+                #{right_heel},
+                #{user_id},
+                #{company_id},
+                #{foot_scan_group_id},
+                #{measure_time},
+                #{scan_type},
+                #{store_id},
+                #{phone},
+                #{crm_remark_name},
+                #{crm_remark_remark},
+                #{crm_remark_sex},
+                #{crm_remark_size},
+                #{store_name}
+            </trim>
         </foreach>
     </insert>
 
     <select id="getDataList" resultMap="userDataMap" parameterType="Map">
-        select <include refid="userDataColumn" />
+        select
+        <include refid="userDataColumn"/>
         from tb_foot_data
         <where>
             <if test="phone != null and phone != ''">
-                and phone like  CONCAT('%',#{phone},'%')
+                and phone like CONCAT('%',#{phone},'%')
             </if>
             <if test="start_time != null and start_time != ''">
                 and <![CDATA[ measure_time >= #{start_time} ]]>
