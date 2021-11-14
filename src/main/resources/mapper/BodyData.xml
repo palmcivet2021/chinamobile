@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.chinamobile.foot.bodydata.dao.BodyDataDao">
+<mapper namespace="com.chinamobile.foot.body.dao.BodyDataDao">
 
-    <resultMap id="userDataMap" type="com.chinamobile.foot.bodydata.bean.BodyData">
+    <resultMap id="userDataMap" type="com.chinamobile.foot.body.bean.BodyData">
         <result property="id" column="id"/>
         <result property="device_code" column="device_code"/>
         <result property="positive_per" column="positive_per"/>
@@ -43,7 +43,7 @@
     </sql>
 
 
-    <insert id="insertData" parameterType="com.chinamobile.foot.bodydata.bean.BodyData">
+    <insert id="insertData" parameterType="com.chinamobile.foot.body.bean.BodyData">
         <selectKey keyColumn="id" keyProperty="id" order="AFTER" resultType="int">
             select @@IDENTITY AS id
         </selectKey>

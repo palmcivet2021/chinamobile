@@ -1,7 +1,7 @@
 package com.chinamobile.foot.util;
 
 import com.chinamobile.foot.base.service.BaseDataService;
-import com.chinamobile.foot.shoepaddata.bean.ShoePadData;
+import com.chinamobile.foot.shoepad.bean.ShoePadData;
 import gnu.io.*;
 
 import java.io.IOException;

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.chinamobile.foot.shoepaddata.dao.ShoePadDataDao">
+<mapper namespace="com.chinamobile.foot.shoepad.dao.ShoePadDataDao">
 
-    <resultMap id="userDataMap" type="com.chinamobile.foot.shoepaddata.bean.ShoePadData">
+    <resultMap id="userDataMap" type="com.chinamobile.foot.shoepad.bean.ShoePadData">
         <result property="id" column="id"/>
         <result property="userid" column="userid"/>
         <result property="ad1" column="ad1"/>
@@ -28,7 +28,7 @@
         <result property="deal_time" column="deal_time"/>
     </resultMap>
 
-    <resultMap id="userDataMap2" type="com.chinamobile.foot.shoepaddata.bean.ShoePadData" extends="userDataMap">
+    <resultMap id="userDataMap2" type="com.chinamobile.foot.shoepad.bean.ShoePadData" extends="userDataMap">
         <result property="show_time" column="show_time"/>
     </resultMap>
 
@@ -86,7 +86,7 @@
     </sql>
 
 
-    <resultMap id="shoePadDataMap" type="com.chinamobile.foot.shoepaddata.bean.ShoePadData2">
+    <resultMap id="shoePadDataMap" type="com.chinamobile.foot.shoepad.bean.ShoePadData2">
         <result property="id" column="id"/>
         <result property="userid" column="userid"/>
         <result property="ad1" column="ad1"/>
@@ -113,7 +113,7 @@
     </resultMap>
 
 
-    <insert id="insertData" parameterType="com.chinamobile.foot.shoepaddata.bean.ShoePadData">
+    <insert id="insertData" parameterType="com.chinamobile.foot.shoepad.bean.ShoePadData">
         <selectKey keyColumn="id" keyProperty="id" order="AFTER" resultType="int">
             select @@IDENTITY AS id
         </selectKey>
@@ -193,7 +193,7 @@
     </select>
 
 
-    <select id="getData" resultType="com.chinamobile.foot.shoepaddata.bean.ShoePadData" parameterType="Map">
+    <select id="getData" resultType="com.chinamobile.foot.shoepad.bean.ShoePadData" parameterType="Map">
         select id,
         <include refid="dataColumn2"/>
         from tb_shoepad_data
@@ -201,7 +201,7 @@
     </select>
 
 
-    <select id="getShoePadData" resultType="com.chinamobile.foot.shoepaddata.bean.ShoePadData2" parameterType="Map">
+    <select id="getShoePadData" resultType="com.chinamobile.foot.shoepad.bean.ShoePadData2" parameterType="Map">
         SELECT GROUP_CONCAT(id) id,
         GROUP_CONCAT(userid) userid,
         GROUP_CONCAT(ad1) ad1,

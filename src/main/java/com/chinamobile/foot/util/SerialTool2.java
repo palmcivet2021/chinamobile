@@ -1,6 +1,6 @@
 package com.chinamobile.foot.util;
 
-import com.chinamobile.foot.shoepaddata.bean.ShoePadData;
+import com.chinamobile.foot.shoepad.bean.ShoePadData;
 import gnu.io.*;
 import lombok.SneakyThrows;
 

@@ -3,8 +3,8 @@ package com.chinamobile.foot.timer;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.chinamobile.foot.bodydata.bean.BodyData;
-import com.chinamobile.foot.bodydata.service.BodyDataService;
+import com.chinamobile.foot.body.bean.BodyData;
+import com.chinamobile.foot.body.service.BodyDataService;
 import com.chinamobile.foot.footdata.bean.FootData;
 import com.chinamobile.foot.footdata.service.FootDataService;
 import com.chinamobile.foot.util.HttpUtil;

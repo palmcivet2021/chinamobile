@@ -2,15 +2,15 @@ package com.chinamobile.foot.base.service.impl;
 
 import com.chinamobile.foot.base.dao.BaseDataDao;
 import com.chinamobile.foot.base.service.BaseDataService;
-import com.chinamobile.foot.bodydata.bean.BodyData;
-import com.chinamobile.foot.bodydata.bean.BodyDataDetail;
-import com.chinamobile.foot.bodydata.dao.BodyDataDao;
-import com.chinamobile.foot.bodydata.dao.BodyDataDetailDao;
-import com.chinamobile.foot.eheaddata.dao.EHeadDataDao;
-import com.chinamobile.foot.eheaddata.dao.EHeadDataResultDao;
+import com.chinamobile.foot.body.bean.BodyData;
+import com.chinamobile.foot.body.bean.BodyDataDetail;
+import com.chinamobile.foot.body.dao.BodyDataDao;
+import com.chinamobile.foot.body.dao.BodyDataDetailDao;
+import com.chinamobile.foot.ehead.dao.EHeadDataDao;
+import com.chinamobile.foot.ehead.dao.EHeadDataResultDao;
 import com.chinamobile.foot.footdata.dao.FootDataDao;
 import com.chinamobile.foot.footdata.dao.FootDataDetailDao;
-import com.chinamobile.foot.shoepaddata.dao.ShoePadDataDao;
+import com.chinamobile.foot.shoepad.dao.ShoePadDataDao;
 import com.chinamobile.foot.tablerecord.bean.TableRecord;
 import com.chinamobile.foot.tablerecord.dao.TableRecordDao;
 import com.chinamobile.foot.userinfo.dao.UserInfoDao;
@@ -115,11 +115,11 @@ public class BaseDataServiceImpl<T> implements BaseDataService<T> {
             return footDataDetailDao;
         } else if (t instanceof TableRecord) {
             baseDataDao = tableRecordDao;
-        } else if (t instanceof com.chinamobile.foot.eheaddata.bean.EHeadData) {
+        } else if (t instanceof com.chinamobile.foot.ehead.bean.EHeadData) {
             baseDataDao = eHeadDataDao;
-        } else if (t instanceof com.chinamobile.foot.eheaddata.bean.EHeadDataResult) {
+        } else if (t instanceof com.chinamobile.foot.ehead.bean.EHeadDataResult) {
             baseDataDao = eHeadDataResultDao;
-        } else if (t instanceof com.chinamobile.foot.shoepaddata.bean.ShoePadData) {
+        } else if (t instanceof com.chinamobile.foot.shoepad.bean.ShoePadData) {
             baseDataDao = shoePadDataDao;
         } else if (t instanceof com.chinamobile.foot.userinfo.bean.UserInfo) {
             baseDataDao = userInfoDao;
