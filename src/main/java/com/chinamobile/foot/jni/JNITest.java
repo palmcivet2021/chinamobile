@@ -1,4 +1,4 @@
-package com.chinamobile.jniexample;
+package com.chinamobile.foot.jni;
 
 public class JNITest {
     static {
