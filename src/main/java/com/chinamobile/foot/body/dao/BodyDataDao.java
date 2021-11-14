@@ -10,8 +10,6 @@ import java.util.Map;
 @Repository
 public interface BodyDataDao extends BaseDataDao {
 
-    void insertBodyData(BodyData userData);
-
     void insertData(BodyData userData);
 
     void insertBatchData(List list);
