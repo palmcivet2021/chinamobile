@@ -262,11 +262,9 @@ public class DealEHeadData {
                             }
                         }
                     });
-
                 }
             });
         }
-
     }
 
 
