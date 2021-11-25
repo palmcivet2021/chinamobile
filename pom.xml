@@ -7,6 +7,9 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>cm-digital-twin</name>
     <description>数字孪生人项目</description>
+    <organization>
+        <name>中国移动通讯研究院未来研究院</name>
+    </organization>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
