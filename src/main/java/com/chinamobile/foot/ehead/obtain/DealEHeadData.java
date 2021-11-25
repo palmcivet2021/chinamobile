@@ -1,9 +1,9 @@
 package com.chinamobile.foot.ehead.obtain;
 
-import com.chinamobile.config.PropertiesListenerConfig;
 import com.chinamobile.foot.base.service.BaseDataService;
 import com.chinamobile.foot.ehead.bean.EHeadData;
 import com.chinamobile.foot.util.*;
+import org.springframework.beans.factory.annotation.Value;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -18,9 +18,10 @@ public class DealEHeadData {
     private static List<EHeadData> longList = new ArrayList<>();
     //private static String path = "D:\\project\\文档\\移动\\mat\\";
     //private static String path = "C:\\braindcode\\arl-eegmodels\\examples";
-    private static String path = PropertiesListenerConfig.getProperty("mat.local.path");
+    //private static String path = PropertiesListenerConfig.getProperty("mat.local.path");
+    @Value("${mat.local.path}")
+    private static String path;
     private static long start = 0;
-    //private static List<long[]> longList = new ArrayList<>();
 
     public static List<EHeadData> dealData(String str) {
         final List<EHeadData> dataList = new ArrayList<>();

@@ -1,4 +1,4 @@
-package com.chinamobile.foot;
+package com.chinamobile;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;

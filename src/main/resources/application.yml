@@ -1,0 +1,52 @@
+# 开发环境配置
+server:
+  # 服务端口
+  port: 8080
+
+# Spring配置
+spring:
+  application:
+    #本项目名称
+    name: chinamobile
+  # 数据源配置
+  datasource:
+    name: dataSource
+    type: com.zaxxer.hikari.HikariDataSource
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/foot?characterEncoding=utf-8&useUnicode=true&allowLoadLocalInfile=true&serverTimezone=Asia/Shanghai&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: root
+
+# MyBatis
+mybatis:
+  # 配置mapper的扫描，找到所有的mapper.xml映射文件
+  mapperLocations: classpath:mapper/**/*Mapper.xml
+  # 加载全局的配置文件
+  configLocation: classpath:mapper/mybatis-config.xml
+  type-aliases-package: com.chinamobile.foot.*
+
+# PageHelper分页插件
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+  #分页参数合理化
+  page-size-zero: true
+
+#jwt配置
+jwt:
+  header: accessToken
+  secret: cmcc123456
+  expire: 10
+
+mat:
+  local:
+    path: C:\\braindcode\\arl-eegmodels\\examples
+  upload:
+    path: /mat/
+
+
+
+
+

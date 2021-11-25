@@ -1,9 +1,8 @@
 package com.chinamobile.foot.util;
 
-import com.chinamobile.config.PropertiesListenerConfig;
+
 import com.jcraft.jsch.*;
-import jcifs.smb.SmbFile;
-import jcifs.smb.SmbFileOutputStream;
+import org.springframework.beans.factory.annotation.Value;
 
 import java.io.*;
 import java.util.*;
@@ -12,15 +11,14 @@ public class RemoteUploadFileUtil {
     private static Channel channel = null;
     private static ChannelSftp sftp = null;
     private static Session sshSession = null;
+    @Value("${mat.local.path}")
+    private static String dPath;
 
-    public static void uploadToRemote(String path, String fileName){
-        //String dPath = "C:\\ehead\\mat";
-        //String dPath = "/mat/";
-        String dPath = PropertiesListenerConfig.getProperty("mat.upload.path");
+    public static void uploadToRemote(String path, String fileName) {
         JSch jsch = new JSch();
         Session session = null;
 
-        try{
+        try {
             //用户名，ip地址，端口号
             session = jsch.getSession("ehead", "8.131.242.171", 22);
         } catch (JSchException e) {
@@ -32,21 +30,21 @@ public class RemoteUploadFileUtil {
         //设置第一次登录时候提示，可行值：（ask/yes/no）
         session.setConfig("StrictHostKeyChecking", "no");
         //设置登录超时时间
-        try{
+        try {
             session.connect(300000);
         } catch (JSchException e) {
             e.printStackTrace();
         }
 
         Channel channel = null;
-        try{
+        try {
             channel = session.openChannel("sftp");
             channel.connect(10000000);
             ChannelSftp sftp = (ChannelSftp) channel;
             String uploadPath = dPath + DateTimeUtils.format(new Date(), "yyyyMMdd");
             //String uploadPath = dPath;
 
-            try{
+            try {
                 sftp.cd(uploadPath);
             } catch (SftpException e) {
                 //e.printStackTrace();
@@ -83,7 +81,7 @@ public class RemoteUploadFileUtil {
             }*/
 
 
-            sftp.put(path+fileName, uploadPath+"/"+fileName);
+            sftp.put(path + fileName, uploadPath + "/" + fileName);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -92,28 +90,27 @@ public class RemoteUploadFileUtil {
         }
 
 
-
     }
 
 
-    public static List<String> listFileName(Channel channel, String serverPath){
+    public static List<String> listFileName(Channel channel, String serverPath) {
         List<String> list = new ArrayList<>();
         ChannelSftp sftp = null;
 
-        try{
-            sftp = (ChannelSftp)channel;
+        try {
+            sftp = (ChannelSftp) channel;
             Vector vector = sftp.ls(serverPath);
-            for(Object item : vector){
-                if(item instanceof com.jcraft.jsch.ChannelSftp.LsEntry){
-                    String fileName = ((com.jcraft.jsch.ChannelSftp.LsEntry)item).getFilename();
-                    if(fileName.equals(".") || fileName.equals("..")){
+            for (Object item : vector) {
+                if (item instanceof com.jcraft.jsch.ChannelSftp.LsEntry) {
+                    String fileName = ((com.jcraft.jsch.ChannelSftp.LsEntry) item).getFilename();
+                    if (fileName.equals(".") || fileName.equals("..")) {
                         continue;
                     }
                     System.out.println(fileName);
                     list.add(fileName);
                 }
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -122,22 +119,23 @@ public class RemoteUploadFileUtil {
 
     /**
      * 下载文件
+     *
      * @param
      */
-    public static void getFileFromSftpServer(Channel channel, String serverPath, String localPath){
+    public static void getFileFromSftpServer(Channel channel, String serverPath, String localPath) {
         ChannelSftp sftp = null;
         File file = null;
 
-        try{
+        try {
             File dir = new File(localPath);
-            if(dir.isFile()){
+            if (dir.isFile()) {
                 System.out.println(dir + " is  a file already ");
                 return;
             }
 
-            sftp = (ChannelSftp)channel;
+            sftp = (ChannelSftp) channel;
             Vector files = sftp.ls(serverPath);
-            for (Iterator<ChannelSftp.LsEntry> iterator = files.iterator(); iterator.hasNext();) {
+            for (Iterator<ChannelSftp.LsEntry> iterator = files.iterator(); iterator.hasNext(); ) {
                 ChannelSftp.LsEntry str = iterator.next();
                 String filename = str.getFilename();
                 if (filename.equals(".") || filename.equals("..")) {
@@ -149,19 +147,19 @@ public class RemoteUploadFileUtil {
 
                 String localFilePath = localPath + "/" + filename;
                 String serverFilePath = serverPath + "/" + filename;
-                if(isdir){
+                if (isdir) {
                     File dir2 = new File(localFilePath);
-                    if(!dir2.exists()){
-                        System.out.println("###make dir="+localFilePath);
+                    if (!dir2.exists()) {
+                        System.out.println("###make dir=" + localFilePath);
                         dir2.mkdir();
-                    }else{
+                    } else {
                         boolean b = dir2.isDirectory();
-                        if(!b){
+                        if (!b) {
 
                         }
                     }
                     getFileFromSftpServer(channel, serverFilePath, localFilePath);
-                }else{
+                } else {
                     /**
                      *
                      */
@@ -173,21 +171,21 @@ public class RemoteUploadFileUtil {
                     //sftp.get(serverFilePath, localPath);
 
                     file = new File(localPath, filename);
-                    if(!file.exists() || file.length() != size){
+                    if (!file.exists() || file.length() != size) {
                         sftp.get(serverFilePath, localPath);
                     }
                 }
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
     }
 
 
-    private static Channel getChannel(String host, int port, String username, String password){
+    private static Channel getChannel(String host, int port, String username, String password) {
 
-        try{
+        try {
             JSch jSch = new JSch();
             sshSession = jSch.getSession(username, host, port);
             sshSession.setPassword(password);
@@ -199,28 +197,28 @@ public class RemoteUploadFileUtil {
             channel = sshSession.openChannel("sftp");
             channel.connect();
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
         return channel;
     }
 
-    private static void closeResource(Channel channel, ChannelSftp sftp, Session session){
-        if(channel != null){
-            if(channel.isConnected()){
+    private static void closeResource(Channel channel, ChannelSftp sftp, Session session) {
+        if (channel != null) {
+            if (channel.isConnected()) {
                 channel.disconnect();
             }
         }
 
-        if(sftp != null){
-            if(sftp.isConnected()){
+        if (sftp != null) {
+            if (sftp.isConnected()) {
                 sftp.disconnect();
             }
         }
 
-        if(session != null){
-            if(session.isConnected()){
+        if (session != null) {
+            if (session.isConnected()) {
                 session.disconnect();
             }
         }
@@ -228,13 +226,13 @@ public class RemoteUploadFileUtil {
     }
 
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         //RemoteUploadFileUtil.uploadToRemote("safdsa", "D:\\project\\文档\\移动\\mat\\A03E.mat");
         //RemoteUploadFileUtil.uploadToRemote("D:\\project\\文档\\移动\\mat\\", "A03E.mat");
 
         channel = getChannel("8.131.242.171", 22, "ehead", "ehead1234");
         List<String> str = listFileName(channel, "/mat/");
-        System.out.println("####str="+str);
+        System.out.println("####str=" + str);
 
         getFileFromSftpServer(channel, "/mat", "D:\\project\\文档\\移动\\mat");
 

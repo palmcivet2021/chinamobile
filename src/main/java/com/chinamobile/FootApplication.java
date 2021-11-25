@@ -1,20 +1,18 @@
 package com.chinamobile;
 
-import com.chinamobile.config.PropertiesListener;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-@EnableScheduling
+
 @SpringBootApplication
-@MapperScan(basePackages = {"com.chinamobile.foot"})
+@MapperScan(basePackages = {"com.chinamobile"})
 @EnableSwagger2
-public class FutureApplication {
+@EnableScheduling
+public class FootApplication {
     public static void main(String[] args) {
-        SpringApplication application = new SpringApplication(FutureApplication.class);
-        application.addListeners(new PropertiesListener("mat-config.properties"));
-        application.run(args);
+        SpringApplication.run(FootApplication.class, args);
     }
 }
