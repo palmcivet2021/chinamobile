@@ -5,7 +5,8 @@
     <groupId>com.chinamobile</groupId>
     <artifactId>foot</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>foot</name>
+    <name>cm-digital-twin</name>
+    <packaging>pom</packaging>
     <description>数字孪生人项目</description>
 
     <parent>

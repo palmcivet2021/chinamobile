@@ -11,8 +11,8 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @MapperScan(basePackages = {"com.chinamobile"})
 @EnableSwagger2
 @EnableScheduling
-public class FootApplication {
+public class FutureApplication {
     public static void main(String[] args) {
-        SpringApplication.run(FootApplication.class, args);
+        SpringApplication.run(FutureApplication.class, args);
     }
 }

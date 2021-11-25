@@ -7,7 +7,7 @@ server:
 spring:
   application:
     #本项目名称
-    name: chinamobile
+    name: cm-digital-twin
   # 数据源配置
   datasource:
     name: dataSource
