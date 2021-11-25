@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.chinamobile.foot.body.dao.BodyDataDetailDao">
+<mapper namespace="com.chinamobile.digitaltwin.body.dao.BodyDataDetailDao">
 
-    <resultMap id="userDataMap" type="com.chinamobile.foot.body.bean.BodyDataDetail">
+    <resultMap id="userDataMap" type="com.chinamobile.digitaltwin.body.bean.BodyDataDetail">
         <result property="id" column="id" />
         <result property="body_id" column="body_id" />
         <result property="pressure_data" column="pressure_data" />
@@ -34,7 +34,7 @@
     </sql>
 
 
-    <insert id="insertData" parameterType="com.chinamobile.foot.body.bean.BodyDataDetail">
+    <insert id="insertData" parameterType="com.chinamobile.digitaltwin.body.bean.BodyDataDetail">
         <selectKey keyColumn="id" keyProperty="id" order="AFTER" resultType="int">
             select  @@IDENTITY AS id
         </selectKey>

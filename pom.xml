@@ -3,9 +3,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.chinamobile</groupId>
-    <artifactId>foot</artifactId>
+    <artifactId>digital-twin</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>foot</name>
+    <name>cm-digital-twin</name>
+    <packaging>pom</packaging>
     <description>数字孪生人项目</description>
 
     <parent>

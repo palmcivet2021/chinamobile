@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.chinamobile.foot.userinfo.dao.UserInfoDao">
+<mapper namespace="com.chinamobile.digitaltwin.userinfo.dao.UserInfoDao">
 
-    <resultMap id="userMap" type="com.chinamobile.foot.userinfo.bean.UserInfo">
+    <resultMap id="userMap" type="com.chinamobile.digitaltwin.userinfo.bean.UserInfo">
         <result property="id" column="id"/>
         <result property="username" column="username"/>
         <result property="password" column="password"/>
@@ -15,7 +15,7 @@
     </sql>
 
 
-    <insert id="insertData" parameterType="com.chinamobile.foot.userinfo.bean.UserInfo">
+    <insert id="insertData" parameterType="com.chinamobile.digitaltwin.userinfo.bean.UserInfo">
         <selectKey keyColumn="id" keyProperty="id" order="AFTER" resultType="int">
             select @@IDENTITY AS id
         </selectKey>
@@ -23,7 +23,7 @@
     </insert>
 
 
-    <select id="getData" resultType="com.chinamobile.foot.userinfo.bean.UserInfo" parameterType="Map">
+    <select id="getData" resultType="com.chinamobile.digitaltwin.userinfo.bean.UserInfo" parameterType="Map">
         select id,
         <include refid="userDataColumn"/>
         from tb_userinfo

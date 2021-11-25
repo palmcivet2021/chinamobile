@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.chinamobile.foot.footdata.dao.FootDataDao">
+<mapper namespace="com.chinamobile.digitaltwin.foot.dao.FootDataDao">
 
-    <resultMap id="userDataMap" type="com.chinamobile.foot.footdata.bean.FootData">
+    <resultMap id="userDataMap" type="com.chinamobile.digitaltwin.foot.bean.FootData">
         <result property="foot_scan_id" column="foot_scan_id"/>
         <result property="foot_scan_sign" column="foot_scan_sign"/>
         <result property="left_length" column="left_length"/>
@@ -58,7 +58,7 @@
     </sql>
 
 
-    <insert id="insertData" parameterType="com.chinamobile.foot.footdata.bean.FootData">
+    <insert id="insertData" parameterType="com.chinamobile.digitaltwin.foot.bean.FootData">
         INSERT INTO tb_foot_data(<include refid="userDataColumn"/>)
         values(
         #{foot_scan_id},
