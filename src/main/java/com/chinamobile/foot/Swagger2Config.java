@@ -1,51 +1,61 @@
-package com.chinamobile.config;
+package com.chinamobile.foot;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 import springfox.documentation.builders.ApiInfoBuilder;
+import springfox.documentation.builders.ParameterBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.schema.ModelRef;
 import springfox.documentation.service.ApiInfo;
-import springfox.documentation.service.Documentation;
+import springfox.documentation.service.Parameter;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+import java.util.ArrayList;
+import java.util.List;
+
+
+/**
+ * @author lichunxia
+ * @date 2019-03-07
+ */
 @Configuration
-@EnableSwagger2
+@ComponentScan("com.chinamobile")
 public class Swagger2Config extends WebMvcConfigurationSupport {
     @Bean
-    public Docket createRestApi(){
+    public Docket createRestApi() {
+        ParameterBuilder tokenPar = new ParameterBuilder();
+        List<Parameter> pars = new ArrayList<Parameter>();
+        tokenPar.name("Authorization").description("jwt令牌").modelRef(new ModelRef("string")).parameterType("header").required(false).build();
+        pars.add(tokenPar.build());
         return new Docket(DocumentationType.SWAGGER_2)
-                .apiInfo(apiInfo())
                 .select()
-                //.apis(RequestHandlerSelectors.basePackage("com.chinamobile"))
-                .apis(RequestHandlerSelectors.withClassAnnotation(Api.class))
-                .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))  //为有@ApiOperation注解的方法生成API文档
-                .paths(PathSelectors.any())
-                .build();
+                .apis(RequestHandlerSelectors.any())
+                .apis(RequestHandlerSelectors.basePackage("com.chinamobile"))
+                .paths(PathSelectors.regex("/.*"))
+                .build()
+                .globalOperationParameters(pars)
+                .apiInfo(apiInfo());
     }
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("未来所项目接口文档")
-                .description("")
-                .termsOfServiceUrl("")
-                .version("1.0")
+                .title("数字孪生人项目-api文档")
+                .version("v1.0")
                 .build();
     }
 
-
     /**
      * 配置swagger2的静态资源路径
+     *
      * @param registry
      */
     @Override
-    protected void addResourceHandlers(ResourceHandlerRegistry registry) {
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
         // 解决静态资源无法访问
         registry.addResourceHandler("/**")
                 .addResourceLocations("classpath:/static/");
@@ -56,6 +66,4 @@ public class Swagger2Config extends WebMvcConfigurationSupport {
         registry.addResourceHandler("/webjars/**")
                 .addResourceLocations("classpath:/META-INF/resources/webjars/");
     }
-
-
 }

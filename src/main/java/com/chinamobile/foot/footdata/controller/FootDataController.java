@@ -37,6 +37,7 @@ public class FootDataController {
      *
      * @return
      */
+    @ApiOperation("全部脚型数据列表")
     @RequestMapping("/getFootData1")
     public List<FootData> getFootData1() {
         Map map = new HashMap();
@@ -91,13 +92,4 @@ public class FootDataController {
 
         return data;
     }
-
-    public String fallback(Throwable e) {
-        if (e != null) {
-            e.printStackTrace();
-        }
-        return "services is not running! parameters name is:";
-    }
-
-
 }

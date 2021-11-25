@@ -3,6 +3,8 @@ package com.chinamobile.foot.userinfo.controller;
 import com.chinamobile.foot.base.service.BaseDataService;
 import com.chinamobile.foot.userinfo.bean.UserInfo;
 import com.chinamobile.foot.userinfo.service.UserInfoService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.HashMap;
 import java.util.Map;
 
+@Api(tags = "用户管理相关接口")
 @RestController
 public class UserInfoController {
     @Autowired
@@ -23,6 +26,7 @@ public class UserInfoController {
      * @param username
      * @param password
      */
+    @ApiOperation("新增用户")
     @RequestMapping("/addUser")
     public void addUser(String username, String password) {
         UserInfo userInfo = new UserInfo(username, password);
@@ -36,6 +40,7 @@ public class UserInfoController {
      * @param username
      * @return
      */
+    @ApiOperation("根据用户名获取用户信息")
     @RequestMapping("/getUser")
     public UserInfo getUser(String username) {
         Map map = new HashMap();
@@ -43,6 +48,4 @@ public class UserInfoController {
 
         return (UserInfo) baseDataService.getData(new UserInfo(), map);
     }
-
-
 }

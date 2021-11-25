@@ -7,6 +7,8 @@ import com.chinamobile.foot.ehead.obtain.EheadServer;
 import com.chinamobile.foot.ehead.bean.EHeadData;
 import com.chinamobile.foot.ehead.bean.EHeadDataResult;
 import com.github.pagehelper.PageInfo;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,13 +17,14 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.HashMap;
 import java.util.Map;
 
+@Api(tags = "脑机设备相关接口")
 @RestController
 @CrossOrigin
 public class EHeadDataController {
     @Autowired
     private BaseDataService baseDataService;
 
-
+    @ApiOperation("获取头部数据")
     @RequestMapping("/getEHeadData")
     public PageInfo<EHeadData> getEHeadData(String start_time, String end_time) {
         Map map = new HashMap();
@@ -36,8 +39,8 @@ public class EHeadDataController {
         return result;
     }
 
+    @ApiOperation("获取训练数据")
     @RequestMapping("/getTrainData")
-    //@JwtIgnore
     public int getTrainData() {
         int i = 0;
         try {
@@ -52,11 +55,11 @@ public class EHeadDataController {
         return i;
     }
 
+    @ApiOperation("获取头部结果")
     @RequestMapping("/getEheadResult")
     @JwtIgnore
     public EHeadDataResult getEheadResult() {
         EHeadDataResult eHeadDataResult = (EHeadDataResult) baseDataService.getData(new EHeadDataResult(), null);
-
         return eHeadDataResult;
     }
 
@@ -74,14 +77,4 @@ public class EHeadDataController {
         //EheadServer.setStart(false);
         EheadServer.isStart = false;
     }
-
-    /*public EHeadData getTrainData(){
-        Map map = new HashMap();
-        map.put("id", 1);
-        EHeadData data = (EHeadData) baseDataService.getData(new EHeadData(), map);
-
-        return data;
-    }*/
-
-
 }

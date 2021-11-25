@@ -6,6 +6,7 @@ import com.chinamobile.foot.body.bean.BodyData;
 import com.chinamobile.foot.body.bean.BodyDataDetail;
 import com.chinamobile.foot.body.service.BodyDataService;
 import com.github.pagehelper.PageInfo;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.HashMap;
 import java.util.Map;
 
+@Api(tags = "情感设备相关接口")
 @RestController
 @CrossOrigin
 public class BodyDataController {

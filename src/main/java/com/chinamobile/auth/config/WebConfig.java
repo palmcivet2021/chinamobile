@@ -4,6 +4,7 @@ import com.chinamobile.auth.interceptor.JwtInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
@@ -24,8 +25,8 @@ public class WebConfig implements WebMvcConfigurer {
         //拦截路径可自行配置多个 可用 ，分隔开
         registry.addInterceptor(new JwtInterceptor()).addPathPatterns("/**")
                 .excludePathPatterns("/favicon.ico"
-                        ,"/error"
-                        ,"/getTrainData");
+                        , "/error"
+                        , "/getTrainData", "/swagger-ui.html");
     }
 
     /**
@@ -38,7 +39,7 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addMapping("/**")
                 // 设置允许跨域请求的域名
                 //.allowedOrigins("*")
-                .allowedOriginPatterns("*")
+                //.allowedOriginPatterns("*")
                 // 是否允许证书（cookies）
                 .allowCredentials(true)
                 // 设置允许的方法
@@ -46,6 +47,5 @@ public class WebConfig implements WebMvcConfigurer {
                 // 跨域允许时间
                 .maxAge(3600 * 24);
     }
-
 }
 

@@ -28,8 +28,6 @@ public class HttpScheduleTask {
     private BodyDataService bodyDataService;
 
     public void schedule() {
-
-
         //ScheduledThreadPoolExecutor pool = new ScheduledThreadPoolExecutor(3);
         ScheduledExecutorService pool = Executors.newScheduledThreadPool(3);
         pool.schedule(new Runnable() {
@@ -180,8 +178,5 @@ public class HttpScheduleTask {
 
             bodyDataService.insertBodyData(bodyData);
         }
-
     }
-
-
 }

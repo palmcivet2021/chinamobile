@@ -8,6 +8,8 @@ import com.chinamobile.foot.shoepad.bean.ShoePadData3;
 import com.chinamobile.foot.shoepad.service.ShoePadService;
 import com.chinamobile.foot.util.StringUtil;
 import com.github.pagehelper.PageInfo;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +22,7 @@ import java.util.Map;
 /**
  * 鞋垫压力相关<br/>
  */
+@Api(tags = "智能鞋垫相关接口")
 @RestController
 @CrossOrigin
 public class ShoePadDataController {
@@ -28,7 +31,6 @@ public class ShoePadDataController {
     @Autowired
     private ShoePadService shoePadService;
 
-
     /**
      * 鞋垫压力数据列表
      *
@@ -36,6 +38,7 @@ public class ShoePadDataController {
      * @param end_time
      * @return
      */
+    @ApiOperation("鞋垫压力数据列表")
     @RequestMapping("/getShoePadData")
     @JwtIgnore
     public PageInfo<ShoePadData> getShoePadData(String start_time, String end_time, @RequestParam(name = "pageNum", defaultValue = "1") int pageNum, @RequestParam(name = "pageSize", defaultValue = "10") int pageSize) {
@@ -55,6 +58,7 @@ public class ShoePadDataController {
      * @param end_time
      * @return
      */
+    @ApiOperation("鞋垫压力数据列表2")
     @RequestMapping("/getShoePadData2")
     @JwtIgnore
     public ShoePadData2 getShoePadData2(String start_time, String end_time) {
@@ -79,6 +83,7 @@ public class ShoePadDataController {
      * @param end_time
      * @return
      */
+    @ApiOperation("鞋垫压力数据列表3")
     @RequestMapping("/getShoePadData3")
     @JwtIgnore
     public ShoePadData3 getShoePadData3(String start_time, String end_time) {
