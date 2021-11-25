@@ -6,7 +6,6 @@
     <artifactId>digital-twin</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>cm-digital-twin</name>
-    <packaging>pom</packaging>
     <description>数字孪生人项目</description>
 
     <parent>
