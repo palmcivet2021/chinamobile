@@ -2,7 +2,7 @@ package com.chinamobile.digitaltwin.neuronpro.obtain;
 
 import java.util.concurrent.LinkedBlockingDeque;
 
-public class NettyNeuronTest {
+public class NeuronTest {
     private static final int CAPACITY = 100;
 
     public static void main(String[] args) {
@@ -37,7 +37,7 @@ public class NettyNeuronTest {
      * @throws Exception
      */
     private static void recive(LinkedBlockingDeque<String> blockingQueue) {
-        NettyNeuronClient client = new NettyNeuronClient("P-1", blockingQueue);
+        NeuronClient client = new NeuronClient("P-1", blockingQueue);
         //String ip = "114.67.239.45";
         String ip = "127.0.0.1";
         int port = 7001;

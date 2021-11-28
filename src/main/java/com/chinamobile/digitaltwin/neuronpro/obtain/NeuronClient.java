@@ -19,13 +19,13 @@ import java.util.concurrent.LinkedBlockingDeque;
  *
  * @author lichunxia
  */
-public class NettyNeuronClient {
-    private static final Logger LOGGER = LoggerFactory.getLogger(NettyNeuronClient.class);
+public class NeuronClient {
+    private static final Logger LOGGER = LoggerFactory.getLogger(NeuronClient.class);
 
     private LinkedBlockingDeque<String> blockingQueue;
     private String name;
 
-    public NettyNeuronClient(String name, LinkedBlockingDeque<String> queue) {
+    public NeuronClient(String name, LinkedBlockingDeque<String> queue) {
         this.name = name;
         this.blockingQueue = queue;
     }
@@ -50,7 +50,7 @@ public class NettyNeuronClient {
             bootstrap.handler(new ChannelInitializer<SocketChannel>() {
                 @Override
                 protected void initChannel(SocketChannel ch) {
-                    ch.pipeline().addLast(new NettyNeuronClientHandler(name, blockingQueue));
+                    ch.pipeline().addLast(new NeuronClientHandler(name, blockingQueue));
                 }
             });
 

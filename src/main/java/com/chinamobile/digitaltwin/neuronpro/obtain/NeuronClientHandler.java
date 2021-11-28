@@ -15,15 +15,15 @@ import java.util.concurrent.LinkedBlockingDeque;
  *
  * @author lichunxia
  */
-public class NettyNeuronClientHandler extends ChannelInboundHandlerAdapter {
-    private static final Logger LOGGER = LoggerFactory.getLogger(NettyNeuronClientHandler.class);
+public class NeuronClientHandler extends ChannelInboundHandlerAdapter {
+    private static final Logger LOGGER = LoggerFactory.getLogger(NeuronClientHandler.class);
     /**
      * 把获取的设备信息存储到队列中
      */
     private LinkedBlockingDeque<String> blockingQueue;
     private String name;
 
-    public NettyNeuronClientHandler(String name, LinkedBlockingDeque<String> queue) {
+    public NeuronClientHandler(String name, LinkedBlockingDeque<String> queue) {
         this.name = name;
         this.blockingQueue = queue;
     }
