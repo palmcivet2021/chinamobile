@@ -177,6 +177,7 @@
             <version>1.9.3</version>
         </dependency>
 
+        <!-- netty引入 -->
         <dependency>
             <groupId>io.netty</groupId>
             <artifactId>netty-all</artifactId>
