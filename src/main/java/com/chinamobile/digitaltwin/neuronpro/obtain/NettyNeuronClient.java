@@ -9,13 +9,19 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.LinkedBlockingDeque;
 
 /**
  * 动捕设备接数据收客户端<br/>
+ *
+ * @author lichunxia
  */
 public class NettyNeuronClient {
+    private static final Logger LOGGER = LoggerFactory.getLogger(NettyNeuronClient.class);
+
     private LinkedBlockingDeque<String> blockingQueue;
     private String name;
 
@@ -29,7 +35,7 @@ public class NettyNeuronClient {
      *
      * @throws Exception
      */
-    public void startObtainData(String ip, int port) throws Exception {
+    public void startObtainData(String ip, int port) {
         EventLoopGroup group = new NioEventLoopGroup();
         try {
             //创建客户端启动对象
@@ -48,13 +54,15 @@ public class NettyNeuronClient {
                 }
             });
 
-            System.out.println("动捕设备接收数据客户端 ok..");
+            LOGGER.debug("动捕设备接收数据客户端 ok..");
 
             //启动客户端去连接服务器端
             //关于 ChannelFuture 要分析，涉及到netty的异步模型
             ChannelFuture channelFuture = bootstrap.connect(ip, port).sync();
             //给关闭通道进行监听
             channelFuture.channel().closeFuture().sync();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         } finally {
             group.shutdownGracefully();
         }

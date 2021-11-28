@@ -40,6 +40,12 @@
             <optional>true</optional>
         </dependency>
 
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.16</version>
+        </dependency>
+
         <!--mybatis-plus-->
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>

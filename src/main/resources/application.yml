@@ -40,6 +40,10 @@ jwt:
   secret: cmcc123456
   expire: 10
 
+# 配置日志logging:
+config: classpath:logback-spring.xml
+path: /home/logs
+
 mat:
   local:
     path: C:\\braindcode\\arl-eegmodels\\examples

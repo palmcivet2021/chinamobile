@@ -5,7 +5,7 @@ import java.util.concurrent.LinkedBlockingDeque;
 public class NettyNeuronTest {
     private static final int CAPACITY = 100;
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         LinkedBlockingDeque<String> blockingQueue = new LinkedBlockingDeque<String>(CAPACITY);
 
         //1.接收动捕设备数据
@@ -36,10 +36,10 @@ public class NettyNeuronTest {
      * @param blockingQueue
      * @throws Exception
      */
-    private static void recive(LinkedBlockingDeque<String> blockingQueue) throws Exception {
+    private static void recive(LinkedBlockingDeque<String> blockingQueue) {
         NettyNeuronClient client = new NettyNeuronClient("P-1", blockingQueue);
         //String ip = "114.67.239.45";
-        String ip = "2.0.1.42";
+        String ip = "127.0.0.1";
         int port = 7001;
         client.startObtainData(ip, port);
     }
@@ -50,7 +50,7 @@ public class NettyNeuronTest {
      * @param blockingQueue
      * @throws Exception
      */
-    private static void send(LinkedBlockingDeque<String> blockingQueue) throws Exception {
+    private static void send(LinkedBlockingDeque<String> blockingQueue) {
         //发送设备数据给前端
         NeuronServer neuronServer = new NeuronServer("C-1", blockingQueue);
         neuronServer.sendNeuronData();

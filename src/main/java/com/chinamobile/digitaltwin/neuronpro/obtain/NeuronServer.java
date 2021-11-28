@@ -14,10 +14,19 @@ import io.netty.handler.codec.http.websocketx.WebSocketServerProtocolHandler;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
 import io.netty.handler.stream.ChunkedWriteHandler;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.LinkedBlockingDeque;
 
+/**
+ * websocket服务器端，返回数据给前端<br/>
+ *
+ * @author lichunxia
+ */
 public class NeuronServer {
+    private static final Logger LOGGER = LoggerFactory.getLogger(NeuronServer.class);
+
     private String name;
     private LinkedBlockingDeque<String> blockingQueue;
 
@@ -26,7 +35,10 @@ public class NeuronServer {
         this.blockingQueue = blockingQueue;
     }
 
-    public void sendNeuronData() throws Exception {
+    /**
+     * 发送设备数据给前端<br/>
+     */
+    public void sendNeuronData() {
         //创建两个线程组
         EventLoopGroup bossGroup = new NioEventLoopGroup(1);
         //8个NioEventLoop
@@ -67,11 +79,13 @@ public class NeuronServer {
                 }
             });
 
-            System.out.println("socket服务器 ok..");
+            LOGGER.debug("socket服务器 ok..");
             //启动服务器
             ChannelFuture channelFuture = serverBootstrap.bind(8000).sync();
             channelFuture.channel().closeFuture().sync();
 
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         } finally {
             bossGroup.shutdownGracefully();
             workerGroup.shutdownGracefully();
