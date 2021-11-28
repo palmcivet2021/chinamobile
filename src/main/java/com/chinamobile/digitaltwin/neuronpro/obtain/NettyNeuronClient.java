@@ -29,7 +29,7 @@ public class NettyNeuronClient {
      *
      * @throws Exception
      */
-    public void startObtainData(String ip, int port) throws Exception {
+    public void startObtainData(String ip, int port) {
         EventLoopGroup group = new NioEventLoopGroup();
         try {
             //创建客户端启动对象
@@ -55,6 +55,8 @@ public class NettyNeuronClient {
             ChannelFuture channelFuture = bootstrap.connect(ip, port).sync();
             //给关闭通道进行监听
             channelFuture.channel().closeFuture().sync();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         } finally {
             group.shutdownGracefully();
         }

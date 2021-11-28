@@ -26,7 +26,7 @@ public class NeuronServer {
         this.blockingQueue = blockingQueue;
     }
 
-    public void sendNeuronData() throws Exception {
+    public void sendNeuronData() {
         //创建两个线程组
         EventLoopGroup bossGroup = new NioEventLoopGroup(1);
         //8个NioEventLoop
@@ -72,6 +72,8 @@ public class NeuronServer {
             ChannelFuture channelFuture = serverBootstrap.bind(8000).sync();
             channelFuture.channel().closeFuture().sync();
 
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         } finally {
             bossGroup.shutdownGracefully();
             workerGroup.shutdownGracefully();
