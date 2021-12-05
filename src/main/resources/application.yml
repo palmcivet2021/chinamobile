@@ -12,7 +12,8 @@ spring:
   datasource:
     name: dataSource
     type: com.zaxxer.hikari.HikariDataSource
-    driverClassName: com.mysql.jdbc.Driver
+    #driverClassName: com.mysql.jdbc.Driver
+    driverClassName: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/foot?characterEncoding=utf-8&useUnicode=true&allowLoadLocalInfile=true&serverTimezone=Asia/Shanghai&zeroDateTimeBehavior=convertToNull
     username: root
     password: root
