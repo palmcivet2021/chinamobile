@@ -1,3 +1,4 @@
+
 # 开发环境配置
 server:
   # 服务端口
@@ -17,6 +18,16 @@ spring:
     url: jdbc:mysql://localhost:3306/foot?characterEncoding=utf-8&useUnicode=true&allowLoadLocalInfile=true&serverTimezone=Asia/Shanghai&zeroDateTimeBehavior=convertToNull
     username: root
     password: root
+  data:
+    mongodb:
+      database: digital_twins
+      host: 39.107.250.91
+      port: 27017
+      username: zlroot
+      password: zlroot
+      #uri: mongodb://zlroot:zlroot@39.107.250.91:27017/admin
+      authentication-database: admin
+
 
 # MyBatis
 mybatis:
@@ -54,4 +65,4 @@ mat:
 
 
 
-
+debug: true

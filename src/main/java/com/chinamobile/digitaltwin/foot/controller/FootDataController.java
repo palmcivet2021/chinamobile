@@ -92,4 +92,16 @@ public class FootDataController {
 
         return data;
     }
+
+    @RequestMapping("/getznxData")
+    @JwtIgnore
+    public Map getznx01Data() {
+        Map map = new HashMap();
+        map.put("start_time", "2021-12-10");
+        map.put("end_time", "2021-12-20");
+
+        return map;
+    }
+
+
 }

@@ -4,7 +4,7 @@ package com.chinamobile.digitaltwin.common.blue;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-public class BlueMain {
+public class BlueServerMain {
     public static void main(String[] args) {
         final String serverName = "Bluetooth Server Test";
         final String serverUUID = "1000110100001000800000805F9B34FB";  //根据需要自定义

@@ -30,6 +30,11 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-mongodb</artifactId>
+            <!--<version>2.6.1</version>-->
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
@@ -149,8 +154,10 @@
             <artifactId>bluecove</artifactId>
             <version>2.1.0</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/lib/bluecove-2.1.0.jar</systemPath>
+            <!--<systemPath>${project.basedir}/lib/bluecove-2.1.0.jar</systemPath>-->
+            <systemPath>${project.basedir}/lib/bluecove-2.1.1-SNAPSHOT.jar</systemPath>
         </dependency>
+        <!--使用RXTXComm.jar还需将rxtxParallel.dll，rxtxSerial.dll放入到jdk/jre/bin目录下 -->
         <dependency>
             <groupId>com.RXTXcomm</groupId>
             <artifactId>RXTXcomm</artifactId>
@@ -189,6 +196,17 @@
             <artifactId>netty-all</artifactId>
             <version>4.1.20.Final</version>
         </dependency>
+        <!--<dependency>
+            　　<groupId>org.java-websocket</groupId>
+            　　<artifactId>Java-WebSocket</artifactId>
+            　　<version>1.5.2</version>
+        </dependency>-->
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-websocket</artifactId>
+        </dependency>
+
 
         <!--
         <dependency>
